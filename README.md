@@ -32,6 +32,16 @@ And use it for a new project:
 mvn archetype:generate -DarchetypeCatalog=local
 ```
 
+## Docker
+Create the container
+```
+mvn package docker:build
+```
+Run the container
+```
+docker run -p 8080:8080 -t example/proyect-base:latest
+```
+
 ## Improvements
 - Set log4j.
 - Convert to maven multimodule.
