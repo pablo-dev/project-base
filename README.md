@@ -1,5 +1,8 @@
 # project-base
 
+## Build information
+[![Build Status](https://travis-ci.org/pablo-dev/project-base.svg?branch=master)](https://travis-ci.org/pablo-dev/project-base)
+
 ## Description
 Project base to build REST services with Spring boot.
 
