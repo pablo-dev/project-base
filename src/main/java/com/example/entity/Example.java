@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,29 +15,17 @@ import javax.persistence.*;
 @Table(name = "EXAMPLE")
 public class Example {
 
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id")
     private String id;
 
+    @Getter
+    @Setter
     @Column(name = "name")
     private String name;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }
