@@ -4,6 +4,7 @@ import com.example.entity.Example;
 import com.example.service.ExampleService;
 import com.example.dto.ExampleDto;
 import com.example.dto.MessageDto;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import java.util.Locale;
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/restServices")
 @Validated
+@Slf4j
 public class RestController {
 
     @Autowired
@@ -46,7 +48,9 @@ public class RestController {
     @RequestMapping(path = "findByName/{name}", method = RequestMethod.GET)
     public ResponseEntity<List<ExampleDto>> findByName(@PathVariable("name") String name)
     {
+        log.debug("Finding elements by '{}'", name);
         List<Example> exampleList = exampleService.findByName(name);
+        log.debug("{} elements found", exampleList.size());
         List<ExampleDto> exampleDtoList = modelMapper.map(exampleList, new TypeToken<List<Example>>() {}.getType());
         return new ResponseEntity<>(exampleDtoList, HttpStatus.OK);
     }
